@@ -1,14 +1,14 @@
 
 import { useState } from 'react'
 import {If, Then, Else} from 'react-if';
-// import Trinkets from './components/Trinkets.jsx';
+import Weather from './components/Weather.jsx';
 const VITE_LOCATION_API_KEY = import.meta.env.VITE_LOCATION_API_KEY
 
-const VITE_API_SERVER = import.meta.env.VITE_API_SERVER;
+const VITE_API_SERVER = import.meta.env.VITE_SERVER_URL;
 // console.log(VITE_API_SERVER)
 function App() {
 
-  // const [trinkets, setTrinkets] = useState([]);
+  const [weather, setWeather] = useState([]);
   const [location, setLocation] = useState({});
   const [city, setCity] = useState('');
 
@@ -25,18 +25,20 @@ function App() {
     let url = `https://us1.locationiq.com/v1/search?key=${VITE_LOCATION_API_KEY}&q=${city}&format=json`;
     const response = await fetch(url);
     const data = await response.json();
-    setLocation(data);
+    let locationData = data[0];
+    setLocation(locationData);
 
-    // getTrinkets();
+  getWeather(locationData.lat, locationData.lon);
   }
 
-  // async function getTrinkets() {
-  //   let url = `${VITE_API_SERVER}/trinkets?city=${city}`;
-  //   const response = await fetch(url);
-  //   const data = await response.json();
-  //   setTrinkets(data);
-  // }
-
+  async function getWeather(lat, lon) {
+    let url = `${VITE_API_SERVER}/weather?city=${city}&lat=${lat}&lon=${lon}}`;
+    console.log(url)
+    const response = await fetch(url);
+    const data = await response.json();
+    setWeather(data);
+  }
+console.log(location)
   return (
     <>
       <section>
@@ -46,10 +48,10 @@ function App() {
       </section>
 
       <section>
-        <If condition={location[0].display_name}>
+        <If condition={location.display_name}>
           <Then>
-            <h2>{location[0].display_name}</h2>
-            <p>Latitude: {location[0].lat}, Longitude: {location[0].lon}</p>
+            <h2>{location.display_name}</h2>
+            <p>Latitude: {location.lat}, Longitude: {location.lon}</p>
           </Then>
           <Else>
             <p>Search for a city using the form above</p>
@@ -58,10 +60,10 @@ function App() {
       </section>
 
       <section>
-        <img src={`https://maps.locationiq.com/v3/staticmap?key=${VITE_LOCATION_API_KEY}&center=${location[0].lat},${location[0].lon}&zoom=10`} alt="Map" />
+        <img src={`https://maps.locationiq.com/v3/staticmap?key=${VITE_LOCATION_API_KEY}&center=${location.lat},${location.lon}&zoom=10`} alt="Map" />
       </section>
 
-      {/* <Trinkets trinkets={trinkets} /> */}
+      <Weather weather={weather} />
 
     </>
   )
