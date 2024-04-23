@@ -1,4 +1,4 @@
-
+import Card from 'react-bootstrap/Card';
 function Weather(props) {
     return (
         <section>
@@ -6,15 +6,21 @@ function Weather(props) {
                 {
                     props.weather.map((weatherDate, index) =>
                         <>
-                            <li key={index}>{weatherDate.date} </li>
+                            <Card>
+                                <Card.Text>
+                                    <li key={index}>{weatherDate.date} </li>
 
-                            <li key={index}>{weatherDate.description} </li>
-                            </>
-                                )
-         }
-                            </ul>
-                        </section >
+                                    <li key={index}>{weatherDate.description} </li>
+                                </Card.Text>
+                            </Card>
+
+
+                        </>
+                    )
+                }
+            </ul>
+        </section >
     );
 }
 
-                export default Weather;
+export default Weather;
