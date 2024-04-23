@@ -2,6 +2,9 @@
 import { useState } from 'react'
 import {If, Then, Else} from 'react-if';
 import Weather from './components/Weather.jsx';
+import Image from 'react-bootstrap/Image'
+import Card from 'react-bootstrap/Card'
+
 const VITE_LOCATION_API_KEY = import.meta.env.VITE_LOCATION_API_KEY
 
 const VITE_API_SERVER = import.meta.env.VITE_SERVER_URL;
@@ -39,33 +42,37 @@ function App() {
     setWeather(data);
   }
 console.log(location)
+
   return (
-    <>
+    <div style = {{backgroundColor: '#646cffaa'}}>
       <section>
         <form onSubmit={handleSubmit}>
          <input onChange={handleChangeCity} />
         </form>
       </section>
 
-      <section>
+      <Card style = {{marginBottom: '50px'}}>
         <If condition={location.display_name}>
           <Then>
+            <Card.Text>
             <h2>{location.display_name}</h2>
             <p>Latitude: {location.lat}, Longitude: {location.lon}</p>
+            </Card.Text>
+            
           </Then>
           <Else>
             <p>Search for a city using the form above</p>
           </Else>
         </If>
-      </section>
+      </Card>
 
       <section>
-        <img src={`https://maps.locationiq.com/v3/staticmap?key=${VITE_LOCATION_API_KEY}&center=${location.lat},${location.lon}&zoom=10`} alt="Map" />
+        <Image src={`https://maps.locationiq.com/v3/staticmap?key=${VITE_LOCATION_API_KEY}&center=${location.lat},${location.lon}&zoom=10`} alt="Map" />
       </section>
 
       <Weather weather={weather} />
 
-    </>
+    </div>
   )
 }
 
