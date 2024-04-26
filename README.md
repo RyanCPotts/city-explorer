@@ -1,8 +1,53 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Project Name: City Explorer
 
-Currently, two official plugins are available:
+**Author**: Ryan Potts
+**Version**: 1.0.0
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Overview: 
+This project is a web application designed to explore the integration and utilization of external APIs. APIs provide a powerful mechanism to retrieve data from diverse sources and leverage it within applications. The primary objective of this project is to deepen understanding of API connectivity, data retrieval, and presentation within a web context.
+
+## Change Log
+
+## Credit and Collaborations
+Brandon
+
+
+Lighthouse: https://imgur.com/a/dbl66Kk
+
+Netlify: https://city-explorer-okc.netlify.app/
+
+Render: https://city-explorer-backend-wvtm.onrender.com
+
+
+
+Name of feature: lab 06
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 2pm
+
+Finish time: 4pm
+
+Actual time needed to complete: 2 hours
+
+
+Name of feature: lab 08
+Estimate of time needed to complete:
+
+Start time: 4pm
+
+Finish time: 5pm
+
+Actual time needed to complete: 1 hour
+
+
+Name of feature: lab 10
+
+Estimate of time needed to complete: 2 hours
+
+Start time: 5pm
+
+Finish time: 7pm
+
+Actual time needed to complete: 2 hours
